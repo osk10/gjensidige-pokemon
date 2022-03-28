@@ -34,6 +34,11 @@ interface TypeOfPokemon {
   type: NameUrlPair;
 }
 
+interface Stat {
+  'base_stat': number
+  stat: NameUrlPair;
+}
+
 export interface Pokemon {
   abilities: Ability[];
   base_experience: number;
@@ -47,4 +52,17 @@ export interface Pokemon {
   sprites: Sprites;
   types: TypeOfPokemon[];
   weight: number;
+  stats: Stat[]
 }
+
+// Interfaces for moves
+interface Flavor_text {
+  flavor_text: string;
+}
+
+export interface MoveInfo {
+  name: string;
+  flavor_text_entries: Flavor_text[];
+}
+
+
