@@ -11,26 +11,30 @@ const Card: React.FunctionComponent<Props> = ({ pokemon, move1, move2 }) => {
     if (pokemon) {
         return (
             <div className='cardContainer'>
-                <div className='cardTop'>
-                    <h1>{pokemon.name}</h1>
-                    <h1>{pokemon.stats[0].base_stat} HP</h1>
-                    <img
-                        src={pokemon.sprites.other["official-artwork"].front_default}
-                        alt={`${pokemon.name} illustration of Pokemon`}
-                    />
-                    <p>NO: {pokemon.id} - HT: {pokemon.height} - WT: {pokemon.weight}</p>
+                <div className="headings">
+                    <h1 className="cardName">{pokemon.name}</h1>
+                    <h1 className="cardHP">{pokemon.stats[0].base_stat} HP</h1>
                 </div>
-                <div className='cardMid'>
-                    <h2>Moves</h2>
+                <div className='cardTop'>
+                    <div className='imageContainer'>
+                        <img className='pokemonImg'
+                             src={pokemon.sprites.other["official-artwork"].front_default}
+                             alt={`${pokemon.name} illustration of Pokemon`}
+                        />
+                    </div>
+                    <p>Number: {pokemon.id} - Height: {pokemon.height} - Weight: {pokemon.weight}</p>
+                </div>
+                <div className='cardMoves'>
+                    <h2>Moves:</h2>
                     {move1 &&
                         <>
-                            <h1>{move1.name}</h1>
+                            <h3>{move1.name}</h3>
                             <p>{move1.flavor_text_entries[0].flavor_text}</p>
                         </>
                     }
                     {move2 &&
                         <>
-                            <h1>{move2.name}</h1>
+                            <h3>{move2.name}</h3>
                             <p>{move2.flavor_text_entries[0].flavor_text}</p>
                         </>
                     }
