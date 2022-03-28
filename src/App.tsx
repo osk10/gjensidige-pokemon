@@ -5,13 +5,14 @@ import './app.css';
 import Card from "./components/Card";
 
 const App = () => {
+  const [currentPokNr, setCurrentPokNr] = useState(2)
   const [pokemon, setPokemon] = useState<Pokemon>();
   const [move1, setMove1] = useState<MoveInfo>();
   const [move2, setMove2] = useState<MoveInfo>();
 
   useEffect(() => {
-    fetchPokemon('bulbasaur').then((res) => setPokemon(res));
-  }, []);
+    fetchPokemon(`${currentPokNr}`).then((res) => setPokemon(res));
+  }, [currentPokNr]);
 
   useEffect(() => {
     if(pokemon){
@@ -28,6 +29,7 @@ const App = () => {
   return (
     <div className='appRoot'>
       <Card pokemon={pokemon} move1={move1} move2={move2}/>
+      <button onClick={() => setCurrentPokNr(Math.floor(Math.random() * 151))}>Change pokemon</button>
     </div>
   );
 };
