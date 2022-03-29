@@ -14,6 +14,7 @@ const App = () => {
     fetchPokemon(`${currentPokNr}`).then((res) => setPokemon(res));
   }, [currentPokNr]);
 
+  // Fetch moves for chosen pokemon
   useEffect(() => {
     if(pokemon){
       let move1URL: string = pokemon?.moves[0].move.url
